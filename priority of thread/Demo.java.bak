@@ -1,0 +1,29 @@
+class Multi extends Thread
+{
+	public void run()
+	{
+		System.out.println("Child thread priority " + Thread.currentThread().getPriority());
+		for(int i=1; i<=10; i++)
+		{
+			System.out.println("child thread ");
+		}
+	}
+}
+class Demo
+{
+    public static void main(String args[])
+	{
+		System.out.println("main thread priority " + Thread.currentThread().getPriority());  // 5
+        Thread.currentThread().setPriority(1);
+
+		Multi t=new Multi();
+		t.setPriority(10);
+		t.start();
+		for(int i=1; i<=10; i++)
+		{
+			System.out.println("main thread ");
+		}
+		System.out.println("main thread priority is " + Thread.currentThread().getPriority()); // 1
+	}
+
+}

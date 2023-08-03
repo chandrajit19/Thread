@@ -1,0 +1,27 @@
+class Multi extends Thread
+{
+	public void run()
+	{
+		System.out.println("child thread " + Thread.currentThread());   // information about current thread
+		System.out.println("Child thread running ");
+		System.out.println("child thread " + Thread.currentThread().getName());  // child thread heptagon
+	}
+
+}
+
+class Test
+{
+	public static void main(String a[])
+	{
+		System.out.println(" main thread " + Thread.currentThread());  // information about main thread
+		System.out.println(" main thread " + Thread.currentThread().getName());  // return thread of name 
+        Multi t=new Multi();
+		t.setName("Heptagon");
+		t.start();
+		Thread.currentThread().setName("Pentagon");
+		System.out.println(" main thread " + Thread.currentThread().getName());  // main thread Pentagon
+	}
+
+
+
+}
